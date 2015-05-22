@@ -11,17 +11,35 @@
 
 Menu::Menu() {
 
-	std::string cadena;
-	std::cout << "Como rollas" << std::endl;
 }
 
 Menu::~Menu() {
-	// TODO Auto-generated destructor stub
+
+	std::cout << "Destroy !!";
 }
 
-int Menu::readCommand(){
+ICommand * Menu::readCommand(){
 
-	return 1;
+	int cmdNumber;
+
+	std::cout << "Introduzca comando: ";
+	std::cin >> cmdNumber;
+
+	switch (cmdNumber){
+
+		case EXIT_COMMAND:
+			return NULL;
+
+		case HELLO_COMMAND:
+			return new HelloCommand();
+
+		case GOODBYE_COMMAND:
+			return new GoodbyeCommand();
+
+		default:
+			return new UnknownCommand();
+	}
+
 }
 
 

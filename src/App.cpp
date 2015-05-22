@@ -6,25 +6,33 @@
  */
 
 #include "App.h"
-
 #include <iostream>
 
 
 App::App() {
 
-	std::cout << "Pollas" << std::endl;
+	std::cout << "App!" << std::endl;
+	ICommand * command = NULL;
 
-	this->pollas = Menu();
+	this->menu = new Menu();
+	this->executtor = new CommandExecuttor();
+
+	command = this->menu->readCommand();
+
+	while (command != NULL){
+
+		this->executtor->execute(command);
+
+		command = this->menu->readCommand();
+	}
 
 }
 
 App::~App() {
-	// TODO Auto-generated destructor stub
+
+	delete this->menu;
+
 }
 
 
-int main () {
 
-	App app;
-	return 0;
-}

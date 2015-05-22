@@ -9,12 +9,18 @@
 #define SRC_APP_H_
 
 #include "Menu.h"
+#include "Commands/CommandExecuttor.h"
 
 	class App {
+
 		public:
 			App();
 			virtual ~App();
-			Menu pollas;
+
+		private:
+			Menu * menu;
+			CommandExecuttor * executtor;
+
 	};
 
 
